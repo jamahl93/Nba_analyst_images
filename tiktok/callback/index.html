@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TikTok connected · More Than the Box Score</title>
+<style>body{font-family:system-ui,sans-serif;background:#0b0f1a;color:#eef;max-width:640px;margin:40px auto;padding:0 16px;line-height:1.5}
+code{display:block;word-break:break-all;background:#1b2233;padding:14px;border-radius:10px;font-size:15px;margin:12px 0}
+button{background:#5ad;color:#000;border:0;border-radius:10px;padding:12px 18px;font-size:16px;font-weight:700}</style></head>
+<body><h1>TikTok login</h1><div id="out">Reading…</div>
+<script>
+const p=new URLSearchParams(location.search), code=p.get("code"), err=p.get("error");
+const out=document.getElementById("out");
+if(code){out.innerHTML='<p>Approved. Copy this one-time code and send it to Claude within a few minutes. It works only once and only with the app secret.</p><code id="c"></code><button id="b">Copy code</button>';
+ document.getElementById("c").textContent=code;
+ document.getElementById("b").onclick=()=>{navigator.clipboard.writeText(code);document.getElementById("b").textContent="Copied";};}
+else{out.textContent=err?("TikTok returned an error: "+err+" "+(p.get("error_description")||"")):"No code in this link. Start the TikTok login again.";}
+</script></body></html>
